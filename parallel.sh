@@ -1,4 +1,4 @@
-# split password-list in e.g. 390-line-files:
+# split password-list in e.g. 30-line-files:
 split -l 30 $3 $3-split-
 
 # run bruteforce in parallel:
