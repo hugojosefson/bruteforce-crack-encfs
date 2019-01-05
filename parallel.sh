@@ -1,5 +1,10 @@
 # split password-list in e.g. 390-line-files:
-split -l 390 pwlist.txt pwlist-split-
+split -l 30 $3 $3-split-
 
 # run bruteforce in parallel:
-for PWLIST in $(ls pwlist-split-*) ; do mkdir /tmp/${PWLIST} ; nice bash bruteforce-encfs.sh ~/encfs-dir /tmp/${PWLIST} ${PWLIST} >> /tmp/crack.log 2>&1 & done
+for PWLIST in $(ls $3-split-*)
+  do mkdir -p /tmp/${PWLIST}
+  nice $(dirname $0)/bruteforce-encfs.sh \
+    $1 /tmp/${PWLIST} ${PWLIST} \
+   >> /tmp/${PWLIST}-crack.log 2>&1 &
+done
