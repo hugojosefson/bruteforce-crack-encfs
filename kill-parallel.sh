@@ -2,4 +2,4 @@
 
 set -e
 
-kill $(ps -ef | grep brute | grep -v grep | awk '{print $2}') 
+kill $(ps -ef | grep bruteforce-encfs | grep -v grep | awk '{print $2}') 
